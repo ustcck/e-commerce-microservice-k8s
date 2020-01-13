@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: store
+  namespace: default
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: store
+              servicePort: 8080
+          - path: /services/invoice/*
+            backend:
+              serviceName: invoice
+              servicePort: 8081
+          - path: /services/notification/*
+            backend:
+              serviceName: notification
+              servicePort: 8082
